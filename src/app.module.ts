@@ -7,7 +7,6 @@ import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 
 @Module({
   imports: [
-    CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -18,6 +17,7 @@ import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    CoffeesModule,
     CoffeeRatingModule,
   ],
   controllers: [AppController],
