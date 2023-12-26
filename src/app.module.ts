@@ -24,6 +24,7 @@ import { APP_PIPE } from '@nestjs/core';
       }),
     }),
     ConfigModule.forRoot({
+      isGlobal: true,
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(5432),
