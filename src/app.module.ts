@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
 import { APP_PIPE } from '@nestjs/core';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -24,7 +25,6 @@ import { APP_PIPE } from '@nestjs/core';
       }),
     }),
     ConfigModule.forRoot({
-      isGlobal: true,
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(5432),
@@ -33,6 +33,7 @@ import { APP_PIPE } from '@nestjs/core';
     }),
     CoffeesModule,
     CoffeeRatingModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [
