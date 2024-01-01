@@ -20,7 +20,7 @@ describe('AppController (e2e)', () => {
       .get('/')
       .set('Authorization', process.env.API_KEY)
       .expect(200)
-      .expect('Hello World@');
+      .expect('Hello World');
   });
 
   afterAll(async () => {
