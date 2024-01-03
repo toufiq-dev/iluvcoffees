@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException, Scope } from '@nestjs/common';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -11,7 +11,7 @@ import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import coffeesConfig from './config/coffees.config';
 
-@Injectable()
+@Injectable({ scope: Scope.TRANSIENT })
 export class CoffeesService {
   constructor(
     @InjectRepository(Coffee)
@@ -24,6 +24,7 @@ export class CoffeesService {
     // private readonly configService: ConfigService,
     // @Inject(coffeesConfig.KEY)
   ) {
+    console.log('CoffeesService instantiated');
     // console.log(coffeeBrands);
     // const databaseHost = this.configService.get<string>(
     //   'DATABASE_HOST',
